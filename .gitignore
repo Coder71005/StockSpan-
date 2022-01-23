@@ -1,23 +1,52 @@
-# Compiled class file
-*.class
 
-# Log file
-*.log
+import java.util.*; 
+public class StockSpan {
+       public static int[] StockSpan(int input[]) {
+    	  if (input.length == 0){
+    		   return input;
+    	   } 
+    	  Stack<Integer> stk = new Stack<>();
+    	  stk.push(0); 
+      int ans[] = new int[input.length];
+    	  ans[0] = 1; 
+      
+      for(int i = 1 ; i < input.length;i++) {
+          while(!stk.isEmpty() && input[i] > input[stk.peek()]) {
+        	  stk.pop();
+          }
+          if(stk.isEmpty()) {
+        	  ans[i] = i+1;
+ 
+          }
+          else {
+        	  ans[i]= i-stk.peek();
+        	  
+          }
+          stk.push(i); 
+      }
+      return ans; 
+    	  
+    
+       }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner (System.in); 
+		int n = sc.nextInt(); 
+		int arr[] = new int[n]; 
+		for(int i = 0; i<n ;i++) {
+			arr[i]= sc.nextInt(); 
+		} 
+		int []array  = StockSpan(arr); 
+		for(int i =0; i<n;i++) {
+			System.out.print(array[i]+ " ");
+		}
+		System.out.println();
+		
 
-# BlueJ files
-*.ctxt
+	}
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+}
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
