@@ -1,4 +1,6 @@
-
+// TimeComplexity O(N);
+//  SpaceComplexity O(1); 
+ 
 import java.util.*; 
 public class StockSpan {
        public static int[] StockSpan(int input[]) {
